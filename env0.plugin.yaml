@@ -1,0 +1,14 @@
+name: Spectral
+inputs:
+  tags:
+    description: Spectral tags to include
+    required: true
+  dsn:
+    description: Spectral DSN
+    required: true
+  args:
+    description: Additional arguments for Spectral
+run:
+  exec: |
+    curl -L 'https://get.spectralops.io/latest/x/sh' | sh
+    $HOME/.spectral/spectral scan --include-tags "${inputs.tags}" --dsn ${inputs.dsn} ${inputs.args}
